@@ -1,0 +1,13 @@
+# Secrets
+.env
+
+# Python
+__pycache__/
+*.pyc
+
+# uv
+.venv/
+uv.lock
+
+# OS
+.DS_Store
