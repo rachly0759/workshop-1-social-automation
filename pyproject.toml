@@ -1,0 +1,35 @@
+# pyproject.toml - UV configuration for social media automation
+# This file is OPTIONAL - you can use requirements.txt instead
+
+[project]
+name = "social-media-automation"
+version = "1.0.0"
+description = "Automated social media posting pipeline from Notion to Mastodon"
+requires-python = ">=3.9"
+
+dependencies = [
+    "fastapi>=0.109.0",
+    "uvicorn[standard]>=0.27.0",
+    "requests>=2.31.0",
+    "openai>=1.10.0",
+    "replicate>=0.22.0",
+    "mastodon.py>=1.8.1",
+    "notion-client>=2.2.1",
+    "python-dotenv>=1.0.0",
+    "pydantic>=2.10.0",
+    "python-json-logger>=2.0.7",
+]
+
+[tool.uv]
+# UV-specific settings
+
+[dependency-groups]
+dev = []
+
+[tool.ruff]
+line-length = 100
+target-version = "py39"
+
+[tool.black]
+line-length = 100
+target-version = ['py39']

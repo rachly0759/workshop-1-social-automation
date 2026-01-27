@@ -1,0 +1,19 @@
+# Core framework
+fastapi==0.109.0
+uvicorn[standard]==0.27.0
+
+# API integrations
+requests==2.31.0
+openai==1.10.0
+replicate==0.22.0
+mastodon.py==1.8.1
+notion-client==2.2.1
+
+# Configuration
+python-dotenv==1.0.0
+
+# Data validation (>=2.10 for Python 3.13; 2.5.x pulls pydantic-core 2.14.6 which fails to build)
+pydantic>=2.10.0
+
+# Logging and monitoring
+python-json-logger==2.0.7

@@ -1,0 +1,24 @@
+{
+    "version": 2,
+    "builds": [
+      {
+        "src": "api/index.py",
+        "use": "@vercel/python"
+      }
+    ],
+    "routes": [
+      {
+        "src": "/(.*)",
+        "dest": "api/index.py"
+      }
+    ],
+    "env": {
+      "NOTION_API_KEY": "@notion-api-key",
+      "NOTION_PAGE_ID": "@notion-page-id",
+      "OPENROUTER_API_KEY": "@openrouter-api-key",
+      "OPENROUTER_MODEL": "openai/gpt-4o-mini",
+      "MASTODON_ACCESS_TOKEN": "@mastodon-access-token",
+      "MASTODON_BASE_URL": "@mastodon-base-url",
+      "REPLICATE_API_TOKEN": "@replicate-api-token"
+    }
+  }
