@@ -1,8 +1,8 @@
-from openrouter import generate_post
-from mastodon_posting import post_to_mastodon
-from notion import get_page_content  # Fixed: was fetch_notion_page
-from config import NOTION_PAGE_ID
-from image_generation import generate_image
+from .openrouter import generate_post
+from .mastodon_posting import post_to_mastodon
+from .notion import get_page_content  # Fixed: was fetch_notion_page
+from .config import NOTION_PAGE_ID
+from .image_generation import generate_image
 
 
 def main(dry_run: bool = True):
