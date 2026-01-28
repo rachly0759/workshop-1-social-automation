@@ -3,6 +3,7 @@ from mastodon_posting import post_to_mastodon
 from notion import get_page_content  # Fixed: was fetch_notion_page
 from config import NOTION_PAGE_ID
 from image_generation import generate_image
+from telegram_hitl import request_approval  # NEW: Import approval function
 
 
 def main(dry_run: bool = True):
@@ -12,6 +13,10 @@ def main(dry_run: bool = True):
 
     # Step 2: generate structured post
     post_idea = generate_post(notion_text)
+    
+    # Fix hashtags if they're a list
+    if isinstance(post_idea.hashtags, list):
+        post_idea.hashtags = ' '.join(post_idea.hashtags)
     
     print(f"\nGenerated post:")
     print(f"Caption: {post_idea.caption}")
@@ -28,6 +33,17 @@ def main(dry_run: bool = True):
             output_path="generated.webp"
         )
         print(f"Image saved to {image_path}")
+
+    # NEW: Step 3.5: Get human approval via Telegram
+    print("\n👤 Sending for human approval...")
+    decision, feedback = request_approval(post_idea, image_path)
+    
+    if decision == "reject":
+        print(f"\n❌ Post rejected. Feedback: {feedback}")
+        print("⛔ Not posting to Mastodon.")
+        return  # Exit early, don't post
+    
+    print("\n✅ Post approved by human!")
 
     # Step 4: post to Mastodon (dry-run by default)
     post_to_mastodon(post_idea, image_path=image_path, dry_run=dry_run)

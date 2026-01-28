@@ -9,6 +9,7 @@ dependencies = [
     "openai>=2.15.0",
     "mastodon-py>=2.1.4",
     "replicate>=1.0.7",
+    "python-telegram-bot>=22.6",
 ]
 
 [dependency-groups]
